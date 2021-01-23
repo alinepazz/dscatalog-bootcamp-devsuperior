@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.devsuperior.dscatalog.dto.CategoryDTO;
 import com.devsuperior.dscatalog.services.CategoryService;
+import com.devsuperior.dscatalog.services.exceptions.EntityNotFoundException;
 
 @RestController
 @RequestMapping(value = "/categories")
@@ -27,8 +28,8 @@ public class CategoryResource {
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<CategoryDTO> findById(@PathVariable Long id){
+
 		CategoryDTO dto = service.findById(id);
-		
 		return ResponseEntity.ok().body(dto);
 	}
 }
